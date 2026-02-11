@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mea+Culpa&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://use.typekit.net/kiz3rou.css");
+
+:root {
+  --font-heading: "Spectral", serif;
+  --font-subheading: "inter-variable", sans-serif;
+  --font-body: "baskerville-urw", serif;
+
+}
+
+/* === FONT === */
+
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 2;
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Mea Culpa", cursive;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #af781e;
+  margin-bottom: 1rem;
+  font-size: 6rem;
+  margin-top: 1rem;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #FAF3E1;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/* === FONT FADE === */
+
+.fade-text {
+    opacity: 0;
+    animation: fadeInOut 15s ease-in-out;
+    font-size: 24px;
+    text-align: center;
+    padding: 50px 40px 0;
+    max-width: 1300px; /* Constrains width */
+    margin: 0 auto; /* Centers it */
+}
+
+/* Define the animation sequence */
+@keyframes fadeInOut {
+    /* At the start (0%) and end (100%) of the cycle, opacity is 0 */
+    0% {
+        opacity: 0;
+    }
+    /* Halfway through (50%), opacity is 1 (fully visible) */
+    50% {
+        opacity: 1;
+    }
+    /* Back to hidden at the end of the cycle */
+    100% {
+        opacity: 0;
+    }
+}
+
+/* === BACKGROUND === */
+
+.cursor-page {
+    cursor: url('images/hand-cursor-32.png') 32 32, auto !important;
+}
+
+
+body {
+  background-color: #1C1C1C;
+  color: #FAF3E1;
+}
+
+.center {
+  margin: 0 auto;
+  padding: 100px 40px;
+  height: auto;
+  text-align: left; 
+  max-width: 800px;
+}
+
+/* === BASE STYLE === */
+
+body {
+    margin: 0;
+    overflow: hidden; /* Hide scrollbar during splash screen */
+}
+
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 100; /* Ensure it's on top of everything */
+}
+
+#main-content {
+    padding: 20px;
+    position: relative; /* Add this so absolute positioned images work */
+    min-height: 100vh; /* Make sure body is tall enough for scattered images */
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* === IMAGE STYLE === */
+
+.image-style {
+    width: 400px;
+    height: auto; 
+    filter: grayscale(100%) contrast(150%) brightness(75%);  /* Noir-effect filter*/
+    transition: filter 0.3s ease; /* Smooth transition */
+}
+
+.image-style__resized2 {
+  width: 350px;
+  height: auto; 
+  filter: grayscale(100%) contrast(150%) brightness(75%); 
+}
+
+/* Glow effect on hover */
+.drop-shadow-glow:hover {
+    /* Horizontal offset, Vertical offset, Blur radius, Color */
+    filter: drop-shadow(2px 10px 9px rgba(211,175,55, 1)); 
+}
+
+/* Image scaling */
+a .thumbnail {
+  /* Set initial size and add a smooth transition */
+  transition: transform 0.3s ease;
+}
+
+/*
+a .thumbnail:hover {
+  transform: scale(1.3);
+  /* Optional: bring enlarged image above other elements 
+  position: relative;
+  z-index: 10; 
+}
+*/
+
+.blurry-image {
+  filter: blur(3px);   /* Gaussian blur */
+  -webkit-filter: blur(3px);
+}
+
+/* === IMAGE POSITIONING === */
+.scattered-image {
+    position: absolute;
+}
+
+.img1 {
+    top: 20px;
+    left: 50px;
+    transform: rotate(10deg); /* Optional: add rotation */
+}
+
+.img1:hover {
+    transform: rotate(-10deg) scale(1.5);
+    z-index: 10;
+}
+
+.img2 {
+    top: 150px;
+    right: 30px;
+    transform: rotate(-15deg);
+}
+
+.img2:hover {
+    transform: rotate(15deg) scale(1.5);
+    z-index: 10;
+}
+
+.img3 {
+    bottom: 40px;
+    left: 40%;
+    transform: rotate(5deg);
+}
+
+.img3:hover {
+    transform: rotate(-5deg) scale(1.5);
+    z-index: 10;
+}
+
+.img4 {
+    top: 300px;
+    right: 60%;
+    transform: rotate(-5deg);
+}
+
+.img4:hover {
+    transform: rotate(5deg) scale(1.5);
+    z-index: 10;
+}
+
+.img5 {
+    top: 500px;
+    right: 50%;
+    transform: rotate(-51deg);
+}
+
+.img5:hover {
+    transform: rotate(51deg) scale(1.5);
+    z-index: 10;
+}
+
+.img6 {
+    bottom: 650px;
+    left: 60%;
+    transform: rotate(20deg);
+}
+
+.img6:hover {
+    transform: rotate(-20deg) scale(1.5);
+    z-index: 10;
+}
+
+.img7 {
+    bottom: 100px;
+    right: 10%;
+    transform: rotate(-5deg);
+}
+
+.img7:hover {
+    transform: rotate(5deg) scale(1.5);
+    z-index: 10;
+}
+
+.img8 {
+    bottom: 100px;
+    left: 40%;
+    transform: rotate(-5deg);
+}
+
+.img8:hover {
+    transform: rotate(5deg) scale(1.2);
+    z-index: 10;
+}
+
+.img9 {
+    top: 100px;
+    left: 30%;
+    transform: rotate(-5deg);
+}
+
+.img9:hover {
+    transform: rotate(5deg) scale(1.5);
+    z-index: 10;
+}
+
+.img10 {
+    bottom: 10px;
+    right: 1%;
+    transform: rotate(-25deg);
+}
+
+.img10:hover {
+    transform: rotate(25deg) scale(1.5);
+    z-index: 10;
+}
+
+.img11 {
+    bottom: 10px;
+    left: 0.2%;
+    max-width: 300px;
+    transform: rotate(-70deg);
+}
+
+.img11:hover {
+    transform: rotate(-60deg) scale(1.2);
+    z-index: 10;
+}
+
+.img12 {
+    bottom: 2px;
+    left: -5px;
+    max-width: 200px;
+    transform: rotate(-30deg);
+    z-index: 0; 
+}
+
+.img12:hover {
+    transform: rotate(0deg) scale(0.8);
+    z-index: 0;
+}
+
+/* === IMAGE CHANGE === */
+
+.noFilter {
+  filter: none !important; /* Class to remove the filter */
+}
+
+
+/* === EASTER EGG === */
+
+/* Hidden checkbox */
+/* Hidden checkbox */
+#genie-trigger {
+  display: none;
+}
+
+.genie-lamp {
+  cursor: pointer;
+}
+
+/* Turn all images blue when genie is clicked */
+#genie-trigger:checked ~ a img {
+  filter: hue-rotate(180deg) saturate(200%)!important;
+}
+
+/* Also turn the lamp itself blue */
+#genie-trigger:checked ~ label img {
+  filter: hue-rotate(180deg) saturate(200%) !important;
+}
+
