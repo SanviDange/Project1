@@ -318,7 +318,7 @@ a .thumbnail:hover {
 }
 
 .genie-lamp {
-  cursor: pointer;
+  cursor: url('images/hand-cursor-32.png') 32 32, auto !important;
 }
 
 /* Turn all images blue when genie is clicked */
@@ -331,3 +331,13 @@ a .thumbnail:hover {
   filter: hue-rotate(180deg) saturate(200%) !important;
 }
 
+/* === BUTTON === */
+.button {
+  background-color: #FAF3E1;
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: url('images/hand-cursor-32.png') 32 32, auto !important;
+  transition: background-color 0.3s ease;
+}
