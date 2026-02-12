@@ -150,7 +150,7 @@ a .thumbnail {
 .scattered-image {
     position: absolute;
     transition: transform 0.3s ease;
-    max-width: 400px;
+    max-width: min(400px, 35vw);
     height: auto;
 }
 
@@ -248,49 +248,48 @@ a .thumbnail {
 
     #main-content {
         display: grid;
-        width: 100% !important;
-        grid-template-columns: repeat(1fr, 1fr);
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: repeat(6, 1fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         align-items: center;
-        padding: 0px 0px;
+        padding: 40px 20px;
+        gap: 50px; /* Space between stacked images */
         min-height: auto;
     }
 
     .scattered-image {
         position: relative !important; /* Forces them into a stack */
-        width: 150%;
         top: auto !important;
         left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: rotate(0deg) !important; /* Remove rotation for clarity */
+        width: 85% !important;
+        max-width: 320px !important;
+        margin: 0 auto;
     }
-        .img1 {top: 0%;left: 0%; transform: rotate(-10deg); min-width:200%;}
-
-        .img2 {top: 0%;left: 0%; transform: rotate(-15deg); min-width:120%;}
-
-        .img3 {top: 0%;left: 0%; transform: rotate(5deg); min-width:190% !important}
-
-        .img4 {top: 0%; left: 0%; transform: rotate(-5deg); min-width:120% !important}
-
-        .img5 {top: 10%; bottom: 10%; left: 0.3%; transform: rotate(-51deg);}
-
-        .img6 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(20deg);}
-
-        .img7 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(-5deg);}
-
-        .img8 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(-5deg);}
-
-        .img9 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(-5deg);}
-
-        .img10 {top: 0%;bottom: 2%; left: 0.3%; transform: rotate(-25deg);}
-
-        .img11 {top: 0%;bottom: 2%; left: 0.3%;max-width: min(300px, 30vw); transform: rotate(60deg);}
-
-        .img12 {top: 0%;bottom: 1%; left: 0.3%; max-width: min(200px, 20vw); transform: rotate(0deg); z-index: 0;}
-    
     
     .scattered-image:hover {
         transform: none !important; /* Disable massive scale on touch */
     }
+
+    /* Manually "Chaos-Coding" the grid items */
+    
+    #main-content a:nth-child(1) { margin: 0 0 0 10%; transform: rotate(8deg); }
+    #main-content a:nth-child(2) { margin: 40px 0 0 -10%; transform: rotate(-12deg); z-index: 2; }
+    
+    #main-content a:nth-child(3) { margin: -20px 0 0 5%; transform: rotate(-5deg); }
+    #main-content a:nth-child(4) { margin: 10px 0 0 15%; transform: rotate(15deg); }
+    
+    #main-content a:nth-child(5) { margin: -30px 10% 0 0; transform: rotate(-20deg); z-index: 3; }
+    #main-content a:nth-child(6) { margin: 20px 0 0 -5%; transform: rotate(10deg); }
+    
+    #main-content a:nth-child(7) { margin: 0 0 0 20%; transform: rotate(-8deg); }
+    #main-content a:nth-child(8) { margin: -10px 0 0 -15%; transform: rotate(5deg); }
+    
+    #main-content a:nth-child(9) { margin: 15px 0 0 0; transform: rotate(12deg); }
+    #main-content a:nth-child(10) { margin: -40px 5% 0 0; transform: rotate(-15deg); }
 
     /* The Spoon and Lamp at the bottom */
     #main-content a:nth-child(11) { 
@@ -305,5 +304,10 @@ a .thumbnail {
         justify-content: center;
         align-self: flex-end;
         padding-bottom: 40px;
+    }
+
+    .img12 {
+        width: 80% !important;
+        transform: rotate(-10deg) !important;
     }
 }
