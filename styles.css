@@ -31,6 +31,11 @@ h1 {
   margin-top: 1rem;
 }
 
+h1.subpage {
+    font-size:3rem; 
+    color:#FAF3E1;
+}
+
 h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -82,7 +87,7 @@ body {
 
 .center {
   margin: 0 auto;
-  padding: 100px 40px;
+  padding: 40px 40px;
   height: auto;
   text-align: left; 
   max-width: 800px;
@@ -124,16 +129,18 @@ body {
 /* === IMAGE STYLE === */
 
 .image-style {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: auto; 
-    filter: grayscale(100%) contrast(150%) brightness(75%);  /* Noir-effect filter*/
-    transition: filter 0.3s ease; /* Smooth transition */
+    filter: grayscale(100%) contrast(150%) brightness(75%);
+    transition: filter 0.3s ease;
 }
 
 .image-style__resized2 {
-  width: 350px;
-  height: auto; 
-  filter: grayscale(100%) contrast(150%) brightness(75%); 
+   width: 100%;
+   max-width: 350px;
+   height: auto; 
+   filter: grayscale(100%) contrast(150%) brightness(75%); 
 }
 
 /* Glow effect on hover */
@@ -165,141 +172,79 @@ a .thumbnail:hover {
 /* === IMAGE POSITIONING === */
 .scattered-image {
     position: absolute;
+    transition: transform 0.3s ease;
+    max-width: min(400px, 35vw);
+    height: auto;
 }
 
-.img1 {
-    top: 20px;
-    left: 50px;
-    transform: rotate(10deg); /* Optional: add rotation */
+.img1 {top: 5%; left: 10%; transform: rotate(10deg); /* Optional: add rotation */}
+.img1:hover {transform: rotate(-10deg) scale(1.5); z-index: 10;}
+
+.img2 {top: 15%; right: 5%; transform: rotate(-15deg);}
+.img2:hover {transform: rotate(15deg) scale(1.5); z-index: 10;}
+
+.img3 {bottom: 8%; left: 40%; transform: rotate(5deg);}
+.img3:hover {transform: rotate(-5deg) scale(1.5); z-index: 10;}
+
+.img4 {top: 30%; right: 60%; transform: rotate(-5deg);}
+.img4:hover {transform: rotate(5deg) scale(1.5); z-index: 10;}
+
+.img5 {top: 50%; right: 50%; transform: rotate(-51deg);}
+.img5:hover {transform: rotate(51deg) scale(1.5); z-index: 10;}
+
+.img6 {bottom: 20%; left: 60%; transform: rotate(20deg);}
+.img6:hover {transform: rotate(-20deg) scale(1.5); z-index: 10;}
+
+.img7 {bottom: 10%; right: 10%; transform: rotate(-5deg);}
+.img7:hover {transform: rotate(5deg) scale(1.5); z-index: 10;}
+
+.img8 {bottom: 10%; left: 40%; transform: rotate(-5deg);}
+.img8:hover {transform: rotate(5deg) scale(1.2); z-index: 10;}
+
+.img9 {top: 10%; left: 30%; transform: rotate(-5deg);}
+.img9:hover {transform: rotate(5deg) scale(1.5); z-index: 10;}
+
+.img10 {bottom: 2%; right: 1%; transform: rotate(-25deg);}
+.img10:hover {transform: rotate(25deg) scale(1.5); z-index: 10;}
+
+.img11 {bottom: 2%; left: 0.2%; max-width: min(300px, 30vw); transform: rotate(-70deg);}
+.img11:hover {transform: rotate(-60deg) scale(1.2); z-index: 10;}
+
+.img12 {bottom: 1%; left: 0.5%; max-width: min(200px, 20vw); transform: rotate(-30deg); z-index: 0;}
+.img12:hover {transform: rotate(0deg) scale(0.8); z-index: 0;}
+
+
+/* Scale the parent container instead of repositioning everything */
+@media (max-width: 1400px) {
+    #main-content {
+        transform: scale(0.85);
+        transform-origin: top left;
+    }
 }
 
-.img1:hover {
-    transform: rotate(-10deg) scale(1.5);
-    z-index: 10;
+@media (max-width: 1024px) {
+    #main-content {
+        transform: scale(0.65);
+        transform-origin: top left;
+    }
 }
 
-.img2 {
-    top: 150px;
-    right: 30px;
-    transform: rotate(-15deg);
+@media (max-width: 768px) {
+    #main-content {
+        transform: scale(0.5);
+        transform-origin: top left;
+    }
+    
+    body {
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
 }
 
-.img2:hover {
-    transform: rotate(15deg) scale(1.5);
-    z-index: 10;
-}
-
-.img3 {
-    bottom: 40px;
-    left: 40%;
-    transform: rotate(5deg);
-}
-
-.img3:hover {
-    transform: rotate(-5deg) scale(1.5);
-    z-index: 10;
-}
-
-.img4 {
-    top: 300px;
-    right: 60%;
-    transform: rotate(-5deg);
-}
-
-.img4:hover {
-    transform: rotate(5deg) scale(1.5);
-    z-index: 10;
-}
-
-.img5 {
-    top: 500px;
-    right: 50%;
-    transform: rotate(-51deg);
-}
-
-.img5:hover {
-    transform: rotate(51deg) scale(1.5);
-    z-index: 10;
-}
-
-.img6 {
-    bottom: 650px;
-    left: 60%;
-    transform: rotate(20deg);
-}
-
-.img6:hover {
-    transform: rotate(-20deg) scale(1.5);
-    z-index: 10;
-}
-
-.img7 {
-    bottom: 100px;
-    right: 10%;
-    transform: rotate(-5deg);
-}
-
-.img7:hover {
-    transform: rotate(5deg) scale(1.5);
-    z-index: 10;
-}
-
-.img8 {
-    bottom: 100px;
-    left: 40%;
-    transform: rotate(-5deg);
-}
-
-.img8:hover {
-    transform: rotate(5deg) scale(1.2);
-    z-index: 10;
-}
-
-.img9 {
-    top: 100px;
-    left: 30%;
-    transform: rotate(-5deg);
-}
-
-.img9:hover {
-    transform: rotate(5deg) scale(1.5);
-    z-index: 10;
-}
-
-.img10 {
-    bottom: 10px;
-    right: 1%;
-    transform: rotate(-25deg);
-}
-
-.img10:hover {
-    transform: rotate(25deg) scale(1.5);
-    z-index: 10;
-}
-
-.img11 {
-    bottom: 10px;
-    left: 0.2%;
-    max-width: 300px;
-    transform: rotate(-70deg);
-}
-
-.img11:hover {
-    transform: rotate(-60deg) scale(1.2);
-    z-index: 10;
-}
-
-.img12 {
-    bottom: 2px;
-    left: -5px;
-    max-width: 200px;
-    transform: rotate(-30deg);
-    z-index: 0; 
-}
-
-.img12:hover {
-    transform: rotate(0deg) scale(0.8);
-    z-index: 0;
+@media (max-width: 480px) {
+    #main-content {
+        transform: scale(0.35);
+        transform-origin: top left;
+    }
 }
 
 /* === IMAGE CHANGE === */
@@ -335,9 +280,23 @@ a .thumbnail:hover {
 .button {
   background-color: #FAF3E1;
   color: #333;
-  border: none;
-  padding: 12px 24px;
+  border-radius: 400px;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px 10px 2px 10px;
   border-radius: 5px;
   cursor: url('images/hand-cursor-32.png') 32 32, auto !important;
   transition: background-color 0.3s ease;
+}
+
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  h1.subpage {
+    font-size: 2rem;
+  }
+
+  .button {
+    padding: 5px 15px;
+  }
 }
