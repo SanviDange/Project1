@@ -4,7 +4,7 @@
 :root {
   --font-heading: "Spectral", serif;
   --font-subheading: "inter-variable", sans-serif;
-  --font-body: "baskerville-urw", serif;
+  --font-body: "binter-variable", sans-serif;
 }
 
 /* === FONT === */
@@ -87,6 +87,8 @@ body {
   height: auto;
   text-align: left; 
   max-width: 800px;
+  justify-content: center; /* Centers vertically */
+  align-items: center; /* Centers horizontally */
 }
 
 /* === BASE STYLE === */
@@ -240,16 +242,31 @@ a .thumbnail {
     body {
         overflow-y: auto; /* Enable scrolling for the stack */
         overflow-x: hidden;
+        margin: 30px 30px 30px 30px;
+         height: 100dvh;
     }
 
     h1 {
-        font-size: 3.5rem; /* Scale down heading */
+        font-size: 3rem; /* Scale down heading */
     }
+    
+    h1.subpage {
+        content: fit-content;
+        color: #FAF3E1;
+    }
+
+    p {
+        font-size: 1rem; /* Smaller font size */
+        line-height: 1.6; /* Tighter line spacing */
+        padding: 0 20px; /* Add padding so text doesn't touch edges */
+    }
+
+
 
     #main-content {
         display: grid;
-        width: 100% !important;
-        grid-template-columns: repeat(1fr, 1fr);
+        width: 100%;
+        grid-template-columns: 1fr, 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         align-items: center;
@@ -259,19 +276,18 @@ a .thumbnail {
 
     .scattered-image {
         position: relative !important; /* Forces them into a stack */
-        width: 150%;
-        top: auto !important;
-        left: auto !important;
+        max-width: 110% !important;
     }
-        .img1 {top: 0%;left: 0%; transform: rotate(-10deg); min-width:200%;}
 
-        .img2 {top: 0%;left: 0%; transform: rotate(-15deg); min-width:120%;}
+        .img1 {top: 0%;left: 0%; transform: rotate(-10deg); z-index: 1;}
 
-        .img3 {top: 0%;left: 0%; transform: rotate(5deg); min-width:190% !important}
+        .img2 {top: 0%;left: 0%; transform: rotate(-15deg); z-index: 10;}
 
-        .img4 {top: 0%; left: 0%; transform: rotate(-5deg); min-width:120% !important}
+        .img3 {top: 0%;left: 0%; transform: rotate(5deg); z-index: 10;}
 
-        .img5 {top: 10%; bottom: 10%; left: 0.3%; transform: rotate(-51deg);}
+        .img4 {top: 0%; left: 0%; transform: rotate(-5deg); z-index: 1;}
+
+        .img5 {top: 10%; bottom: 10%; left: 0.3%; transform: rotate(-51deg); z-index: 1;}
 
         .img6 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(20deg);}
 
@@ -283,27 +299,19 @@ a .thumbnail {
 
         .img10 {top: 0%;bottom: 2%; left: 0.3%; transform: rotate(-25deg);}
 
-        .img11 {top: 0%;bottom: 2%; left: 0.3%;max-width: min(300px, 30vw); transform: rotate(60deg);}
+        .img11 {top: 0%;bottom: 2%; left: 0.3%; transform: rotate(60deg);}
 
-        .img12 {top: 0%;bottom: 1%; left: 0.3%; max-width: min(200px, 20vw); transform: rotate(0deg); z-index: 0;}
+        .img12 {top: 0%;bottom: 1%; left: 0.3%; transform: rotate(0deg); z-index: 0;}
     
-    
-    .scattered-image:hover {
-        transform: none !important; /* Disable massive scale on touch */
-    }
 
-    /* The Spoon and Lamp at the bottom */
-    #main-content a:nth-child(11) { 
-        grid-column: span 1; 
-        margin: 20px 0 0 10%; 
-        transform: rotate(-45deg); 
-    }
     
     .genie-lamp {
-        grid-column: span 1;
-        display: flex;
-        justify-content: center;
-        align-self: flex-end;
         padding-bottom: 40px;
     }
+
+        .center {
+        max-width: 90%; /* Takes up 90% of screen width */
+        padding: 20px;
+    }
 }
+
