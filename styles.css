@@ -118,6 +118,30 @@ body {
     display: none !important;
 }
 
+.container {
+    /* Important: The sticky element is constrained by its parent container's height */
+    height: 500px; /* Example height to demonstrate scrolling within container */
+    overflow: auto; /* Adds scrollbar to container to see effect */
+    position: relative;
+}
+
+.sticky-wrapper {
+    /* The wrapper defines the area the button can stick within */
+    padding: 10px;
+}
+
+.sticky-btn {
+    position: sticky;
+    top: 0; /* Sticks to 0px from the top of the container when scrolled */
+    /* Add desired styling */
+    padding: 10px 20px;
+    background-color: #363736;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+
 /* === IMAGE STYLE === */
 
 .image-style {
