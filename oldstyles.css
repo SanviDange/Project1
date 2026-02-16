@@ -118,8 +118,6 @@ body {
     display: none !important;
 }
 
-/* === HELP BUTTON === */
-
 .container {
     /* Important: The sticky element is constrained by its parent container's height */
     height: 500px; /* Example height to demonstrate scrolling within container */
@@ -175,28 +173,36 @@ a .thumbnail {
 }
 
 /* === IMAGE POSITIONING === */
-/* The stage where the images live */
-.gallery-container {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-}
-
-/* Base styles for every image */
 .scattered-image {
     position: absolute;
-    width: clamp(180px, 28vw, 400px);
+    transition: transform 0.3s ease;
+    max-width: 400px;
     height: auto;
-    transition: transform 0.2s ease;
 }
 
+.img1 {top: 5%; left: 10%; transform: rotate(10deg);}
 
-.scattered-image:hover {
-    z-index: 100;
-    transform: scale(1.05) !important;
-}
+.img2 {top: 15%; right: 5%; transform: rotate(-15deg);}
 
+.img3 {bottom: 8%; left: 40%; transform: rotate(5deg);}
+
+.img4 {top: 30%; right: 60%; transform: rotate(-5deg);}
+
+.img5 {top: 50%; right: 50%; transform: rotate(-51deg);}
+
+.img6 {bottom: 20%; left: 60%; transform: rotate(20deg);}
+
+.img7 {bottom: 10%; right: 10%; transform: rotate(-5deg);}
+
+.img8 {bottom: 10%; left: 40%; transform: rotate(-5deg);}
+
+.img9 {top: 10%; left: 30%; transform: rotate(-5deg);}
+
+.img10 {bottom: 2%; right: 1%; transform: rotate(-25deg);}
+
+.img11 {bottom: 2%; left: 0.2%; max-width: min(300px, 30vw); transform: rotate(-70deg);}
+
+.img12 {bottom: 1%; left: 0.5%; max-width: min(200px, 20vw); transform: rotate(-30deg); z-index: 0;}
 
 /* === IMAGE CHANGE === */
 
@@ -284,13 +290,13 @@ a .thumbnail {
 
 /* === DESKTOP HOVER EFFECTS === */
 @media (hover: hover) {
-    .img1:hover {transform: rotate(-10deg) scale(2); z-index: 10;}
-    .img2:hover {transform: rotate(15deg) scale(2); z-index: 10;}
-    .img3:hover {transform: rotate(-5deg) scale(2); z-index: 10;}
-    .img4:hover {transform: rotate(5deg) scale(2); z-index: 10;}
-    .img5:hover {transform: rotate(51deg) scale(2); z-index: 10;}
-    .img6:hover {transform: rotate(-20deg) scale(2); z-index: 10;}
-    .img7:hover {transform: rotate(5deg) scale(2); z-index: 10;}
+    .img1:hover {transform: rotate(-10deg) scale(1.5); z-index: 10;}
+    .img2:hover {transform: rotate(15deg) scale(1.5); z-index: 10;}
+    .img3:hover {transform: rotate(-5deg) scale(1.5); z-index: 10;}
+    .img4:hover {transform: rotate(5deg) scale(1.5); z-index: 10;}
+    .img5:hover {transform: rotate(51deg) scale(1.5); z-index: 10;}
+    .img6:hover {transform: rotate(-20deg) scale(1.5); z-index: 10;}
+    .img7:hover {transform: rotate(5deg) scale(1.5); z-index: 10;}
     .img8:hover {transform: rotate(5deg) scale(1.2); z-index: 10;}
     .img9:hover {transform: rotate(5deg) scale(1.5); z-index: 10;}
     .img10:hover {transform: rotate(25deg) scale(1.5); z-index: 10;}
@@ -298,58 +304,81 @@ a .thumbnail {
     .img12:hover {transform: rotate(0deg) scale(0.8); z-index: 0;}
 }
 
-/* === RESPONSIVE BREAKPOINTS === */
-
-/* Tablets - UNCHANGED */
-@media (max-width: 1024px) {
-    .scattered-image {
-        max-width: 300px;
-        width: 35vw;
-    }
-}
-
-/* Mobile ONLY - BIGGER & CLUSTERED */
+/* === MOBILE STACKING (MAX-WIDTH 768PX) === */
 @media (max-width: 768px) {
     body {
-        overflow-x: hidden !important; /* Prevent horizontal scroll */
-        overflow-y: auto; /* Allow vertical scroll */
+        overflow-y: auto; /* Enable scrolling for the stack */
+        overflow-x: hidden;
+        margin: 30px 30px 30px 30px;
+         height: 100dvh;
+    }
+
+    h1 {
+        font-size: 3rem; /* Scale down heading */
     }
     
-    .gallery-container {
-        height: auto;  
-        min-height: 250vh;
-        position: relative;
-        padding: 20px 0;
+    h1.subpage {
+        content: fit-content;
+        color: #FAF3E1;
     }
-    
+
+    p {
+        font-size: 1rem; /* Smaller font size */
+        line-height: 1.6; /* Tighter line spacing */
+        padding: 0 20px; /* Add padding so text doesn't touch edges */
+    }
+
+
+
+    #main-content {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr, 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        align-items: center;
+        padding: 0px 0px;
+        min-height: auto;
+    }
+
     .scattered-image {
-        max-width: 100%; /* BIGGER */
-        width: 90vw; /* 90% of screen */
-    }
-}
-
-/* Small mobile ONLY */
-@media (max-width: 480px){
-    body {
-        overflow-x: hidden !important; /* Prevent horizontal scroll */
-        overflow-y: auto; /* Allow vertical scroll */
+        position: relative !important; /* Forces them into a stack */
+        max-width: 110% !important;
     }
 
-    .gallery-container {
-        height: auto;  
-        overflow: visible;
-        min-height: 300vh;
-    }
+        .img1 {top: 0%;left: 0%; transform: rotate(-10deg); z-index: 1;}
+
+        .img2 {top: 0%;left: 0%; transform: rotate(-15deg); z-index: 10;}
+
+        .img3 {top: 0%;left: 0%; transform: rotate(5deg); z-index: 10;}
+
+        .img4 {top: 0%; left: 0%; transform: rotate(-5deg); z-index: 1;}
+
+        .img5 {top: 10%; bottom: 10%; left: 0.3%; transform: rotate(-51deg); z-index: 1;}
+
+        .img6 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(20deg);}
+
+        .img7 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(-5deg);}
+
+        .img8 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(-5deg);}
+
+        .img9 {top: 0%;bottom: 0%; left: 0.3%; transform: rotate(-5deg);}
+
+        .img10 {top: 0%;bottom: 2%; left: 0.3%; transform: rotate(-25deg);}
+
+        .img11 {top: 0%;bottom: 2%; left: 0.3%; transform: rotate(60deg);}
+
+        .img12 {top: 0%;bottom: 1%; left: 0.3%; transform: rotate(0deg); z-index: 0;}
     
-    .scattered-image {
-        max-width: 100%;
-        width: 80vw; /* Even bigger */
+
+    
+    .genie-lamp {
+        padding-bottom: 40px;
+    }
+
+        .center {
+        max-width: 90%; /* Takes up 90% of screen width */
+        padding: 20px;
     }
 }
 
-/* LANDSCAPE */
-@media (orientation: landscape) {
-  body {
-    flex-direction: row;
-  }
-}
