@@ -212,7 +212,7 @@ a .thumbnail {
   justify-content: center;
   z-index: 9999;
 
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.834);
   backdrop-filter: blur(6px);
 
 
@@ -243,16 +243,12 @@ a .thumbnail {
 .morph-content {
   position: relative;
   margin: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
 
-  background: rgba(0, 0, 0, 0.209);
+  background: rgba(0, 0, 0, 0.888);
   border-radius: 24px;
   padding: 30px;
   width: min(900px, 90vw);
+  box-shadow: 0 4px 30px rgba(250, 243, 225, 0.1);
 }
 
 
@@ -297,6 +293,12 @@ body.no-scroll {
 .morph-card {
   position: relative;
   overflow: visible; /* important */
+  display: flex;        
+  flex-direction: row;    
+  align-items: center;
+  justify-content: center;
+  gap: 40px;             
+  padding: 40px;        
 }
 
 .close {
@@ -395,35 +397,31 @@ body.no-scroll {
         width: 90vw; /* 90% of screen */
     }
 }
-  @media (max-width: 768px) {
 
-  .morph-modal {
+@media (max-width: 768px) {
+  .morph-card {
+    flex-direction: column;   /* stack vertically */
     align-items: center;
     justify-content: center;
-  }
-
-  .morph-content {
-    flex-direction: column;
-    width: 90vw;
-    max-width: 90vw;
     padding: 25px;
-    border-radius: 30px;
-    gap: 20px;
+    gap: 12px;
   }
 
   .morph-image {
-    position: relative !important;
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+    width: 100%;               /* don't let it go full width */
+    max-width: 360px;
+    float: right;
+    align-self: flex-start;
+    order: -1;
+    margin-top: 0;
   }
 
   .morph-info {
     max-width: 100%;
+    margin-top: 0;
     padding-right: 0;
     text-align: left;
   }
-
 }
 
 /* Small mobile ONLY */
@@ -442,6 +440,12 @@ body.no-scroll {
         max-width: 100%;
         width: 80vw; /* Even bigger */
     }
+}
+    @media (max-width: 480px) {
+  .morph-image {
+    width: 60%;
+    max-width: 220px;
+  }
 }
 
 /* LANDSCAPE */

@@ -130,54 +130,88 @@ window.addEventListener('resize', positionImages);
 ================================== */
 
 const galleryImages = document.querySelectorAll('.scattered-image');
-const morphModal = document.getElementById('morphModal');
-const morphImage = document.getElementById('morphImage');
-const morphTitle = document.getElementById('modalTitle');
+const morphModal    = document.getElementById('morphModal');
+const morphImage    = document.getElementById('morphImage');
+const morphTitle    = document.getElementById('modalTitle');
 const morphSubtitle = document.getElementById('modalSubtitle');
 const morphDescription = document.getElementById('modalDescription');
-const closeBtn = document.querySelector('.close');
+const closeBtn      = document.querySelector('.close');
 
 galleryImages.forEach(img => {
-  img.addEventListener("click", function () {
+  img.addEventListener("click", function (e) {
+    e.preventDefault();
 
     const rect = this.getBoundingClientRect();
 
+    // Populate modal content (image hidden to start)
     morphImage.src = this.src;
-
-    morphTitle.textContent = this.dataset.title || "";
-    morphSubtitle.textContent = this.dataset.subtitle || "";
+    morphImage.style.opacity = '0';
+    morphTitle.textContent       = this.dataset.title       || "";
+    morphSubtitle.textContent    = this.dataset.subtitle    || "";
     morphDescription.textContent = this.dataset.description || "";
 
-    // Start morph state
-    morphImage.style.position = "fixed";
-    morphImage.style.top = rect.top + "px";
-    morphImage.style.left = rect.left + "px";
-    morphImage.style.width = rect.width + "px";
-    morphImage.style.height = rect.height + "px";
-    morphImage.style.transform = "none";
-
+    // Show modal (no 'show' yet — just unhide so we can measure)
     morphModal.classList.remove("hidden");
     document.body.classList.add("no-scroll");
 
-    morphImage.offsetHeight;
+    // Let browser render modal so morphImage has a real position
+    requestAnimationFrame(() => {
+      const targetRect = morphImage.getBoundingClientRect();
 
-    morphModal.classList.add("show");
+      // Create a flying clone starting at the thumbnail's position
+      const clone = document.createElement('img');
+      clone.src = this.src;
+      clone.style.cssText = `
+        position: fixed;
+        top:    ${rect.top}px;
+        left:   ${rect.left}px;
+        width:  ${rect.width}px;
+        height: ${rect.height}px;
+        margin: 0;
+        border-radius: 8px;
+        object-fit: contain;
+        z-index: 99999;
+        pointer-events: none;
+        transition: all 0.75s cubic-bezier(.22,1,.36,1);
+      `;
+      document.body.appendChild(clone);
+
+      // Trigger the morph animation on next frame
+      requestAnimationFrame(() => {
+        // Fade in backdrop
+        morphModal.classList.add("show");
+
+        // Fly clone to target position
+        clone.style.top    = targetRect.top    + 'px';
+        clone.style.left   = targetRect.left   + 'px';
+        clone.style.width  = targetRect.width  + 'px';
+        clone.style.height = targetRect.height + 'px';
+        clone.style.borderRadius = '12px';
+
+        // When animation ends, show real image and remove clone
+        clone.addEventListener('transitionend', () => {
+          morphImage.style.opacity = '1';
+          clone.remove();
+        }, { once: true });
+      });
+    });
   });
 });
 
-// Close modal function
+// Close modal
 function closeMorph() {
   morphModal.classList.remove("show");
-  morphModal.classList.add("hidden");
+  setTimeout(() => {
+    morphModal.classList.add("hidden");
+    morphImage.style.opacity = '1'; // reset for next open
+  }, 500);
   document.body.classList.remove("no-scroll");
 }
 
-// Close button
 closeBtn.addEventListener("click", closeMorph);
 
-// Click backdrop to close
-morphModal.addEventListener("click", function(e){
-  if(e.target.classList.contains("morph-backdrop")){
+morphModal.addEventListener("click", function(e) {
+  if (e.target.classList.contains("morph-backdrop")) {
     closeMorph();
   }
 });
