@@ -4,7 +4,7 @@
 :root {
   --font-heading: "Spectral", serif;
   --font-subheading: "inter-variable", sans-serif;
-  --font-body: "binter-variable", sans-serif;
+  --font-body: "inter-variable", sans-serif;
 }
 
 /* === FONT === */
@@ -147,14 +147,12 @@ body {
 /* === IMAGE STYLE === */
 
 .image-style {
-    width: 100%;
     height: auto; 
     filter: grayscale(100%) contrast(150%) brightness(75%);
     transition: filter 0.3s ease;
 }
 
 .image-style__resized2 {
-   width: 100%;
    height: auto; 
    filter: grayscale(100%) contrast(150%) brightness(75%); 
 }
@@ -197,54 +195,124 @@ a .thumbnail {
     transform: scale(1.05) !important;
 }
 
-
 /* === IMAGE CHANGE === */
 
 .noFilter {
   filter: none !important;
 }
 
-/* Overlay background */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+
+/* ===== MORPH MODAL SYSTEM ===== */
+
+.morph-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-/* The card itself */
-.overlay-card {
-    background-color: #1C1C1C;
-    border: 2px solid #af781e;
-    border-radius: 10px;
-    padding: 40px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 10px 40px rgba(175, 120, 30, 0.3);
-    position: relative;
+/* Visible state */
+.morph-modal.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* Close button */
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    color: #FAF3E1;
-    font-size: 24px;
-    cursor: pointer;
+/* Backdrop */
+.morph-backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.05s ease;
 }
 
-/* Hide overlay by default */
-.hidden {
-    display: none !important;
+.morph-modal.show .morph-backdrop {
+  opacity: 1;
+}
+
+/* Center container */
+.morph-content {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  background: rgba(0, 0, 0, 0.209);
+  border-radius: 24px;
+  padding: 30px;
+  width: min(900px, 90vw);
+}
+
+
+/* Morphing Image */
+.morph-image {
+  position: relative;
+  z-index: 10000;
+  transform: none !important;
+
+  height: auto;
+  width: 45%;
+  object-fit: contain;
+
+  transition: 0.8s cubic-bezier(.22,1,.36,1);
+}
+
+/* Info Panel */
+.morph-info {
+  margin-top: 30px;
+  max-width: 500px;
+  flex: 1;
+  text-align: left;
+  padding-right: 40px;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition: opacity 0.5s ease 0.2s,
+              transform 0.5s ease 0.2s;
+}
+
+.morph-modal.show .morph-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll lock */
+body.no-scroll {
+  overflow: hidden;
+}
+
+.morph-card {
+  position: relative;
+  overflow: visible; /* important */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close:hover {
+  opacity: 0.7;
 }
 
 /* === EASTER EGG === */
@@ -258,7 +326,7 @@ a .thumbnail {
 }
 
 /* Turn all images blue when genie is clicked */
-#genie-trigger:checked ~ a img {
+#genie-trigger:checked ~ #main-content img {
   filter: hue-rotate(180deg) saturate(200%) !important;
 }
 
@@ -327,6 +395,36 @@ a .thumbnail {
         width: 90vw; /* 90% of screen */
     }
 }
+  @media (max-width: 768px) {
+
+  .morph-modal {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .morph-content {
+    flex-direction: column;
+    width: 90vw;
+    max-width: 90vw;
+    padding: 25px;
+    border-radius: 30px;
+    gap: 20px;
+  }
+
+  .morph-image {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .morph-info {
+    max-width: 100%;
+    padding-right: 0;
+    text-align: left;
+  }
+
+}
 
 /* Small mobile ONLY */
 @media (max-width: 480px){
@@ -337,7 +435,6 @@ a .thumbnail {
 
     .gallery-container {
         height: auto;  
-        overflow: visible;
         min-height: 300vh;
     }
     

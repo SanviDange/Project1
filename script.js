@@ -45,7 +45,7 @@ function positionImages() {
   }
   
   // Mobile: FIXED CLUSTERED POSITIONS (won't change)
-  if (isMobile) {
+  else if (isMobile) {
     imageStyles = {
       img1:  { top: '3%',   right: '20%',   rotate: '12deg' }, //Bangles
       img2:  { top: '8%',  left: '15%',  rotate: '-8deg' }, //Rose
@@ -124,3 +124,60 @@ function positionImages() {
 
 positionImages();
 window.addEventListener('resize', positionImages);
+
+/* ===============================
+   MORPH MODAL SYSTEM
+================================== */
+
+const galleryImages = document.querySelectorAll('.scattered-image');
+const morphModal = document.getElementById('morphModal');
+const morphImage = document.getElementById('morphImage');
+const morphTitle = document.getElementById('modalTitle');
+const morphSubtitle = document.getElementById('modalSubtitle');
+const morphDescription = document.getElementById('modalDescription');
+const closeBtn = document.querySelector('.close');
+
+galleryImages.forEach(img => {
+  img.addEventListener("click", function () {
+
+    const rect = this.getBoundingClientRect();
+
+    morphImage.src = this.src;
+
+    morphTitle.textContent = this.dataset.title || "";
+    morphSubtitle.textContent = this.dataset.subtitle || "";
+    morphDescription.textContent = this.dataset.description || "";
+
+    // Start morph state
+    morphImage.style.position = "fixed";
+    morphImage.style.top = rect.top + "px";
+    morphImage.style.left = rect.left + "px";
+    morphImage.style.width = rect.width + "px";
+    morphImage.style.height = rect.height + "px";
+    morphImage.style.transform = "none";
+
+    morphModal.classList.remove("hidden");
+    document.body.classList.add("no-scroll");
+
+    morphImage.offsetHeight;
+
+    morphModal.classList.add("show");
+  });
+});
+
+// Close modal function
+function closeMorph() {
+  morphModal.classList.remove("show");
+  morphModal.classList.add("hidden");
+  document.body.classList.remove("no-scroll");
+}
+
+// Close button
+closeBtn.addEventListener("click", closeMorph);
+
+// Click backdrop to close
+morphModal.addEventListener("click", function(e){
+  if(e.target.classList.contains("morph-backdrop")){
+    closeMorph();
+  }
+});

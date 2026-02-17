@@ -1,10 +1,8 @@
  <!DOCTYPE html>
  <html lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
    <head>
      <title>Home Page</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="../styles.css">
    </head>
 
@@ -12,82 +10,142 @@
       <input type="checkbox" id="genie-trigger">
       <div id="main-content">
 
-        <div class="gallery-container">
+      <div class="gallery-container">
 
-    <a>
+    <a href="#">
       <img src="../images/bangles-gold.png" onclick="removeFilter(this)"
         class="img1 image-style scattered-image" 
-        alt="A black and white image of bangles (traditional jewellery in South Asian culture)">
+        alt="A black and white image of bangles (traditional jewellery in South Asian culture)"
+          data-title="Bangles"
+          data-subtitle="Jewellery · 2024"
+          data-description="n m mkmkmlklllmkmkk.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/gold-rose.png" onclick="removeFilter(this)"
         class="img2 image-style scattered-image" 
-        alt="A black and white image of a rose">
+        alt="A black and white image of a rose"
+        data-title="Rose"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a> 
+    <a href="#"> 
       <img src="../images/glass-gold.png" onclick="removeFilter(this)"
         class="img3 image-style scattered-image" 
-        alt="A black and white image of a chalice">
+        alt="A black and white image of a chalice"
+        data-title="Chalice"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/bars-gold.png" onclick="removeFilter(this)"
         class="img4 image-style scattered-image" 
-        alt="A black and white image of gold bars">
+        alt="A black and white image of gold bars"
+        data-title="Gold Bars"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/coin-gold.png" onclick="removeFilter(this)"
         class="img5 image-style__resized2 scattered-image" 
-        alt="A black and white image of gold coins">
+        alt="A black and white image of gold coins"
+        data-title="Gold Coins"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/frame-gold.png" onclick="removeFilter(this)"
         class="img6 image-style scattered-image" 
-        alt="A black and white image of a picture frame">
+        alt="A black and white image of a picture frame"
+        data-title="Picture Frame"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/pen-gold.png" onclick="removeFilter(this)"
         class="img7 image-style scattered-image" 
-        alt="A black and white image of a pen">
+        alt="A black and white image of a pen"
+        data-title="Gold Pen"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/fork-gold.png" onclick="removeFilter(this)"
         class="img8 image-style scattered-image" 
-        alt="A black and white image of a fork">
+        alt="A black and white image of a fork"
+        data-title="Gold Fork"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/crown-gold.png" onclick="removeFilter(this)"
         class="img9 image-style scattered-image" 
-        alt="A black and white image of a crown">
+        alt="A black and white image of a crown"
+        data-title="Gold Crown"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/necklace-gold.png" onclick="removeFilter(this)"
         class="img10 image-style scattered-image" 
-        alt="A black and white image of a necklace">
+        alt="A black and white image of a necklace"
+        data-title="Gold Necklace"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
 
-    <a>
+    <a href="#">
       <img src="../images/spoon-gold.png" onclick="removeFilter(this)"
         class="img11 image-style scattered-image" 
-        alt="A black and white image of a spoon">
+        alt="A black and white image of a spoon"
+        data-title="Gold Spoon"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </a>
-    </div>
+       </div>
 
     <label for="genie-trigger" class="genie-lamp">
-      <img src="../images/genie-lamp.png" class="img12 image-style scattered-image"
-        alt="A genie lamp">
+      <img src="../images/genie-lamp.png" 
+        class="img12 image-style scattered-image"
+        alt="A genie lamp"
+        data-title="Gold Genie Lamp"
+        data-subtitle="Symbol · 2024"
+        data-description="A romantic object transformed into excess.">
     </label>
 
     </div>
-    <script src="../script.js"></script>
 
+    <!-- Modal -->
+<div id="morphModal" class="morph-modal hidden">
+
+  <div class="morph-backdrop"></div> <!-- You also need this -->
+
+  <div class="morph-content">
+    <div class="morph-card">
+
+      <button class="close">&times;</button>
+
+      <div class="morph-info">
+        <h2 id="modalTitle"></h2>
+        <h4 id="modalSubtitle"></h4>
+        <p id="modalDescription"></p>
+      </div>
+
+      <img id="morphImage" class="morph-image">
+
+    </div>
+  </div>
+
+</div>
+
+    <script src="../script.js"></script>
    </body>
 </html>
