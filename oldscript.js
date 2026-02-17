@@ -15,20 +15,6 @@ setTimeout(function() {
 
 }, 8000);
 
-//INFO PANEL
-const infoBtn = document.getElementById("info-button");
-const infoPanel = document.getElementById("info-panel");
-const closeInfo = document.getElementById("close-info");
-
-infoBtn.addEventListener("click", () => {
-  infoPanel.classList.toggle("show");
-});
-
-closeInfo.addEventListener("click", () => {
-  infoPanel.classList.remove("show");
-});
-
-
 // IMAGE SWITCH
 function removeFilter(image) {
   image.classList.add("noFilter");
