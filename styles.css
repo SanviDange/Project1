@@ -64,17 +64,74 @@ h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
-h2.landingpage {
-  font-family: var(--font-subbody);
+h3.landingpage1 {
+  font-family: var(--font-body);
   font-weight: 400;
-  font-style: italic;
-  line-height: 1.2;
+  font-size: 1.3rem;
+  font-style: normal;
+  line-height: 1.5;
   color: #FAF3E1;
   margin-bottom: 1rem;
   margin-top: 1rem;
   align-items: center;
   justify-content: center;
   text-align: center; 
+}
+  @keyframes fadeIn {
+  from {
+    opacity: 0; /* Start from fully transparent */
+  }
+  to {
+    opacity: 1; /* End at fully opaque */
+  }
+}
+
+h3.cardpage {
+   font-family: var(--font-subbody);
+   font-weight: 400;
+   font-style: italic;
+   line-height: 1.2;
+   font-size: 1.5rem;
+   color:#FAF3E1;
+   opacity: 0;
+   display: inline-block;
+   align-items: left;
+   justify-content: top;
+   text-align: left; 
+   animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start from fully transparent */
+  }
+  to {
+    opacity: 1; /* End at fully opaque */
+  }
+}
+
+h3.landingpage2 {
+   font-family: var(--font-subbody);
+   font-weight: 400;
+   font-style: italic;
+   line-height: 1.2;
+   font-size: 2rem;
+   color: #af781e;
+   opacity: 0;
+   display: inline-block;
+   align-items: center;
+   justify-content: center;
+   text-align: center; 
+   animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start from fully transparent */
+  }
+  to {
+    opacity: 1; /* End at fully opaque */
+  }
 }
 
 p.info-text {
@@ -271,7 +328,9 @@ body {
 
 }
 
-/* === IMAGE STYLE === */
+/* =========================
+   IMAGE STYLE
+========================= */
 
 .image-style {
     height: auto; 
@@ -299,7 +358,10 @@ a .thumbnail {
   -webkit-filter: blur(3px);
 }
 
-/* === IMAGE POSITIONING === */
+/* =========================
+   IMAGE POSITION
+========================= */
+
 /* The stage where the images live */
 .gallery-container {
     position: relative;
@@ -329,7 +391,9 @@ a .thumbnail {
 }
 
 
-/* ===== MORPH MODAL SYSTEM ===== */
+/* =========================
+   MORPHING IMAGE
+========================= */
 
 .morph-modal {
   position: fixed;
@@ -386,7 +450,7 @@ a .thumbnail {
   transform: none !important;
 
   height: auto;
-  width: 45%;
+  width: 30%;
   object-fit: contain;
 
   transition: 0.8s cubic-bezier(.22,1,.36,1);
@@ -394,7 +458,7 @@ a .thumbnail {
 
 /* Info Panel */
 .morph-info {
-  margin-top: 30px;
+  margin-top: 10px;
   max-width: 500px;
   flex: 1;
   text-align: left;
@@ -444,7 +508,9 @@ body.no-scroll {
   opacity: 0.7;
 }
 
-/* === EASTER EGG === */
+/* =========================
+  EASTER EGG
+========================= */
 
 #genie-trigger {
   display: none;
@@ -464,20 +530,44 @@ body.no-scroll {
   filter: hue-rotate(180deg) saturate(200%) !important;
 }
 
-/* === BUTTON === */
+/* =========================
+   ENTER BUTTON
+========================= */
 .button {
-  background-color: #FAF3E1;
-  color: #333;
-  border-radius: 5px;
-  width: fit-content;
-  height: fit-content;
-  padding: 2px 10px 2px 10px;
-  cursor: url('images/hand-cursor-32.png') 32 32, auto !important;
-  transition: background-color 0.3s ease;
+  display: inline-block;
+
+  padding: 14px 36px;
+
+  border: 1.5px solid #af771ea5;
+  border-radius: 999px; /* perfect pill */
+
+  background: transparent;
+  color: #e7d6b5;
+
+  font-family: var(--font-subbody);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(4px);
+
+  transition: 
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
 }
 
+/* Hover effect */
+.button:hover {
+  background: rgba(175, 120, 30, 0.08);
+  box-shadow: 0 0 25px rgba(175, 120, 30, 0.25);
+  transform: translateY(-2px);
+}
 
-/* === RESPONSIVE DESIGN === */
+/* =========================
+  RESPONSIVE DESIGN
+========================= */
 
 /* === DESKTOP HOVER EFFECTS === */
 @media (hover: hover) {

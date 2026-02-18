@@ -13,7 +13,7 @@ setTimeout(function() {
     setTimeout(() => main.style.opacity = '1', 50);
   }, 1500);
 
-}, 8000);
+}, 5000);
 
 //INFO PANEL
 const infoBtn = document.getElementById("info-button");
@@ -73,10 +73,10 @@ function positionImages() {
       img6:  { top: '28%',  right: '8%',  rotate: '-10deg' }, //Frame
       img7:  { top: '10%',  left: '12%',  rotate: '8deg' }, //Pen
       img8:  { top: '28%',  right: '15%', rotate: '-12deg' }, //Fork
-      img9:  { top: '88%',  left: '10%',  rotate: '15deg' },
-      img10: { top: '98%',  right: '5%',  rotate: '-18deg' },
-      img11: { top: '108%', left: '8%',   rotate: '10deg' },
-      img12: { top: '118%', right: '10%', rotate: '-8deg' }
+      img9:  { top: '38%',  left: '10%',  rotate: '15deg' }, //Crown
+      img10: { top: '48%',  right: '5%',  rotate: '-18deg' }, //Necklace
+      img11: { top: '50%', left: '8%',   rotate: '10deg' }, //Spoon
+      img12: { top: '40%', left: '2%', rotate: '-8deg' } //Lamp
     };
   }
   // Tablet - UNCHANGED
