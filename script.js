@@ -70,13 +70,13 @@ function positionImages() {
       img3:  { top: '15%',  left: '45%',  rotate: '-10deg' }, //Glass
       img4:  { top: '17%',  right: '7%', rotate: '-15deg' }, //Bars
       img5:  { top: '25%',  left: '40%',   rotate: '18deg' }, //Coins
-      img6:  { top: '28%',  right: '8%',  rotate: '-10deg' }, //Frame
+      img6:  { top: '55%',  right: '8%',  rotate: '-10deg' }, //Frame
       img7:  { top: '10%',  left: '12%',  rotate: '8deg' }, //Pen
       img8:  { top: '28%',  right: '15%', rotate: '-12deg' }, //Fork
       img9:  { top: '38%',  left: '10%',  rotate: '15deg' }, //Crown
-      img10: { top: '48%',  right: '5%',  rotate: '-18deg' }, //Necklace
-      img11: { top: '50%', left: '8%',   rotate: '10deg' }, //Spoon
-      img12: { top: '40%', left: '2%', rotate: '-8deg' } //Lamp
+      img10: { top: '56%',  right: '5%',  rotate: '-18deg' }, //Necklace
+      img11: { top: '45%', left: '8%',   rotate: '10deg' }, //Spoon
+      img12: { top: '50%', left: '2%', rotate: '-8deg' } //Lamp
     };
   }
   // Tablet - UNCHANGED
@@ -233,3 +233,61 @@ morphModal.addEventListener("click", function(e) {
     closeMorph();
   }
 });
+
+/* ===============================
+   TRIGGER GALLERY
+================================== */
+
+const gallery = document.querySelector(".gallery-container");
+const images = document.querySelectorAll(".scattered-image");
+
+images.forEach(img => {
+  img.addEventListener("click", (e) => {
+    e.preventDefault();
+    spawnMultiple(img);
+  });
+});
+
+function spawnMultiple(sourceImg) {
+
+  const amountToSpawn = 3 + Math.floor(Math.random() * 3); 
+  // Spawns 3–5 images per click
+
+  const rect = sourceImg.getBoundingClientRect();
+  const galleryRect = gallery.getBoundingClientRect();
+
+  const baseTop = rect.top - galleryRect.top;
+  const baseLeft = rect.left - galleryRect.left;
+
+  for (let i = 0; i < amountToSpawn; i++) {
+
+    const newImg = document.createElement("img");
+    newImg.src = sourceImg.src;
+
+    newImg.classList.add("clone", "scattered-image");
+
+    // Random size (small to large)
+   const randomSize = 150 + Math.random() * 300;
+    newImg.style.width = randomSize + "px";
+
+    // Spread outward from clicked image
+    const offsetX = (Math.random() - 0.5) * 300;
+    const offsetY = (Math.random() - 0.5) * 300;
+
+    newImg.style.position = "absolute";
+    newImg.style.top = baseTop + offsetY + "px";
+    newImg.style.left = baseLeft + offsetX + "px";
+
+    // Slight rotation
+    const rotation = (Math.random() - 0.5) * 40;
+    newImg.style.transform = `rotate(${rotation}deg) scale(0)`;
+
+    gallery.appendChild(newImg);
+
+    // Animate in
+    setTimeout(() => {
+      newImg.style.transform = `rotate(${rotation}deg) scale(1)`;
+      newImg.style.opacity = "1";
+    }, 20);
+  }
+}
