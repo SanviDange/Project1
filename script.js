@@ -100,13 +100,13 @@ function positionImages() {
   else {
     imageStyles = {
       img1:  { top: '5%',   left: '10%',  rotate: '10deg' },
-      img2:  { top: '15%',  right: '5%',  rotate: '-15deg' },
+      img2:  { top: '16%',  right: '5%',  rotate: '-15deg' },
       img3:  { bottom: '8%', left: '40%', rotate: '5deg' },
       img4:  { top: '30%',  right: '60%', rotate: '-5deg' },
       img5:  { top: '50%',  right: '50%', rotate: '-51deg' },
       img6:  { bottom: '20%', left: '60%', rotate: '20deg' },
       img7:  { bottom: '10%', right: '10%', rotate: '-5deg' },
-      img8:  { bottom: '10%', left: '40%', rotate: '-5deg' },
+      img8:  { bottom: '30%', left: '43%', rotate: '-5deg' },
       img9:  { top: '10%',  left: '30%', rotate: '-5deg' },
       img10: { bottom: '2%',  right: '1%',  rotate: '-25deg' },
       img11: { bottom: '2%',  left: '0.2%', rotate: '-70deg' },
