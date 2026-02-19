@@ -75,8 +75,8 @@ function positionImages() {
       img8:  { top: '28%',  right: '15%', rotate: '-12deg' }, //Fork
       img9:  { top: '38%',  left: '10%',  rotate: '15deg' }, //Crown
       img10: { top: '56%',  right: '5%',  rotate: '-18deg' }, //Necklace
-      img11: { top: '45%', left: '8%',   rotate: '10deg' }, //Spoon
-      img12: { top: '50%', left: '2%', rotate: '-8deg' } //Lamp
+      img11: { bottom: '10%', left: '8%',   rotate: '10deg' }, //Spoon
+      img12: { bottom: '2%', left: '2%', rotate: '-8deg' } //Lamp
     };
   }
   // Tablet - UNCHANGED
@@ -110,7 +110,7 @@ function positionImages() {
       img9:  { top: '10%',  left: '30%', rotate: '-5deg' },
       img10: { bottom: '2%',  right: '1%',  rotate: '-25deg' },
       img11: { bottom: '2%',  left: '0.2%', rotate: '-70deg' },
-      img12: { bottom: '1%',  left: '0.5%', rotate: '-30deg', zIndex: 0 }
+      img12: { bottom: '1%',  left: '0.5%', rotate: '-30deg', zIndex: 10 }
     };
   }
   
@@ -135,6 +135,7 @@ function positionImages() {
       if (s.right)  el.style.right = s.right;
       
       el.style.transform = `rotate(${s.rotate})`;
+      el.style.setProperty('--rotate', s.rotate);
       if (s.zIndex !== undefined) el.style.zIndex = s.zIndex;
     }
   });
@@ -156,6 +157,7 @@ const morphDescription = document.getElementById('modalDescription');
 const closeBtn      = document.querySelector('.close');
 
 galleryImages.forEach(img => {
+  if (img.classList.contains('img12')) return; // skip lamp
   img.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -194,19 +196,15 @@ galleryImages.forEach(img => {
       `;
       document.body.appendChild(clone);
 
-      // Trigger the morph animation on next frame
       requestAnimationFrame(() => {
-        // Fade in backdrop
         morphModal.classList.add("show");
 
-        // Fly clone to target position
         clone.style.top    = targetRect.top    + 'px';
         clone.style.left   = targetRect.left   + 'px';
         clone.style.width  = targetRect.width  + 'px';
         clone.style.height = targetRect.height + 'px';
         clone.style.borderRadius = '12px';
 
-        // When animation ends, show real image and remove clone
         clone.addEventListener('transitionend', () => {
           morphImage.style.opacity = '1';
           clone.remove();
@@ -242,6 +240,7 @@ const gallery = document.querySelector(".gallery-container");
 const images = document.querySelectorAll(".scattered-image");
 
 images.forEach(img => {
+  if (img.classList.contains('img12')) return; // skip lamp
   img.addEventListener("click", (e) => {
     e.preventDefault();
     spawnMultiple(img);
