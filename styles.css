@@ -698,7 +698,7 @@ body.no-scroll {
     }
     
     .scattered-image {
-        max-width: 60%; /* BIGGER */
+        max-width: 65%; /* BIGGER */
         width: 90vw; /* 90% of screen */
     }
 
@@ -729,13 +729,52 @@ body.no-scroll {
     width: 100%;
     border-radius: 0;
   }
+
+h3.landingpage1 {
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+h3.landingpage2 {
+  font-size: 1.7rem;
+  line-height: 1.3;
+}
+
+h1.landingpage {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+h2.landingpage {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+#splash-screen {
+  margin: 10px 4px 10px 4px;
+}
+
+#main-content {
+margin: 10px 20px 10px 20px;
+}
+
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-break {
+    display: block;
+  }
+}
+
 }
 
 /* Small mobile ONLY */
 @media (max-width: 480px){
     
     .scattered-image {
-        max-width: 50%;
+        max-width: 55%;
         width: 90vw; /* Even bigger */
     }
 }
@@ -744,6 +783,20 @@ body.no-scroll {
     width: 60%;
     max-width: 220px;
   }
+  #main-content {
+margin: 10px 20px 10px 20px;
+}
+
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-break {
+    display: block;
+  }
+}
+
 }
 
 /* LANDSCAPE */

@@ -65,16 +65,16 @@ function positionImages() {
   // Mobile: FIXED CLUSTERED POSITIONS (won't change)
   else if (isMobile) {
     imageStyles = {
-      img1:  { top: '3%',   right: '20%',   rotate: '12deg' }, //Bangles
-      img2:  { top: '8%',  left: '15%',  rotate: '-8deg' }, //Rose
-      img3:  { top: '15%',  left: '45%',  rotate: '-10deg' }, //Glass
-      img4:  { top: '17%',  right: '7%', rotate: '-15deg' }, //Bars
-      img5:  { top: '25%',  left: '40%',   rotate: '18deg' }, //Coins
+      img1:  { top: '8%',   right: '20%',   rotate: '12deg' }, //Bangles
+      img2:  { top: '18%',  left: '8%',  rotate: '-8deg' }, //Rose
+      img3:  { top: '24%',  left: '45%',  rotate: '-10deg' }, //Glass
+      img4:  { bottom: '5%',  right: '2%', rotate: '-15deg' }, //Bars
+      img5:  { top: '40%',  left: '40%',   rotate: '18deg' }, //Coins
       img6:  { top: '55%',  right: '8%',  rotate: '-10deg' }, //Frame
-      img7:  { top: '10%',  left: '12%',  rotate: '8deg' }, //Pen
+      img7:  { top: '25%',  left: '12%',  rotate: '8deg' }, //Pen
       img8:  { top: '28%',  right: '15%', rotate: '-12deg' }, //Fork
       img9:  { top: '38%',  left: '10%',  rotate: '15deg' }, //Crown
-      img10: { top: '56%',  right: '5%',  rotate: '-18deg' }, //Necklace
+      img10: { top: '56%',  left: '5%',  rotate: '-18deg' }, //Necklace
       img11: { bottom: '10%', left: '8%',   rotate: '10deg' }, //Spoon
       img12: { bottom: '2%', left: '2%', rotate: '-8deg' } //Lamp
     };
