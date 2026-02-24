@@ -255,6 +255,7 @@ morphModal.addEventListener("click", function(e) {
 
 const gallery = document.querySelector(".gallery-container");
 const images = document.querySelectorAll(".scattered-image");
+const fadeOverlay = document.getElementById("fade-overlay");
 
 let clickCount = 0;
 const MAX_CLICKS = 20;
@@ -262,18 +263,25 @@ let outOfControl = false;
 
 images.forEach(img => {
   if (img.classList.contains('img12')) return;
+
   img.addEventListener("click", (e) => {
     e.preventDefault();
+
+    // KEEP replication
     spawnMultiple(img);
+
     clickCount++;
+
     if (clickCount >= MAX_CLICKS && !outOfControl) {
       outOfControl = true;
-      document.querySelectorAll('.scattered-image').forEach(img => {
-        img.classList.add('falling');
-      });
+
+      // Fade to black
+      fadeOverlay.classList.add("active");
+
+      // Redirect after fade completes
       setTimeout(() => {
-        window.location.href = '../404.html';
-      }, 3000);
+        window.location.href = '../entries/404entry.html';
+      }, 800); // match CSS transition time
     }
   });
 });
@@ -289,16 +297,23 @@ function spawnMultiple(sourceImg) {
     const newImg = document.createElement("img");
     newImg.src = sourceImg.src;
     newImg.classList.add("clone", "scattered-image");
+
     const randomSize = 150 + Math.random() * 300;
     newImg.style.width = randomSize + "px";
+
     const offsetX = (Math.random() - 0.5) * 300;
     const offsetY = (Math.random() - 0.5) * 300;
+
     newImg.style.position = "absolute";
     newImg.style.top = baseTop + offsetY + "px";
     newImg.style.left = baseLeft + offsetX + "px";
+
     const rotation = (Math.random() - 0.5) * 40;
     newImg.style.transform = `rotate(${rotation}deg) scale(0)`;
+    newImg.style.opacity = "0";
+
     gallery.appendChild(newImg);
+
     setTimeout(() => {
       newImg.style.transform = `rotate(${rotation}deg) scale(1)`;
       newImg.style.opacity = "1";

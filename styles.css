@@ -654,17 +654,23 @@ body.no-scroll {
 
 /* #region MAX CLICKS */
 
-.scattered-image.falling {
-  animation: fall 0.5s ease-in forwards !important;
-  transform: translateY(110vh) !important;
-}
-.gallery-container {
-  overflow: hidden;
+/* BLACK OVERLAY FADE */
+
+#fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 999999;
 }
 
-@keyframes fall {
-  0%   { transform: translateY(0) rotate(var(--rotate, 0deg)); }
-  100% { transform: translateY(110vh) rotate(calc(var(--rotate, 0deg) + 20deg)); }
+#fade-overlay.active {
+  opacity: 1;
 }
 
 /* #endregion */
