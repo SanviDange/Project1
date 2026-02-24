@@ -27,7 +27,7 @@ const ambientSound = new Audio('../sounds/backround-music.mp3');
 ambientSound.loop = true;
 ambientSound.volume = 0.05;
 
-const clickSound = new Audio('../sounds/enter-experience.mp3');
+const clickSound = new Audio('../sounds/metal.mp3');
 clickSound.volume = 0.1;
 
 let audioStarted = false;
