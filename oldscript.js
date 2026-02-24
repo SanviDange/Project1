@@ -13,7 +13,21 @@ setTimeout(function() {
     setTimeout(() => main.style.opacity = '1', 50);
   }, 1500);
 
-}, 8000);
+}, 5000);
+
+//INFO PANEL
+const infoBtn = document.getElementById("info-button");
+const infoPanel = document.getElementById("info-panel");
+const closeInfo = document.getElementById("close-info");
+
+infoBtn.addEventListener("click", () => {
+  infoPanel.classList.toggle("show");
+});
+
+closeInfo.addEventListener("click", () => {
+  infoPanel.classList.remove("show");
+});
+
 
 // IMAGE SWITCH
 function removeFilter(image) {
@@ -51,18 +65,18 @@ function positionImages() {
   // Mobile: FIXED CLUSTERED POSITIONS (won't change)
   else if (isMobile) {
     imageStyles = {
-      img1:  { top: '3%',   right: '20%',   rotate: '12deg' }, //Bangles
-      img2:  { top: '8%',  left: '15%',  rotate: '-8deg' }, //Rose
-      img3:  { top: '15%',  left: '45%',  rotate: '-10deg' }, //Glass
-      img4:  { top: '17%',  right: '7%', rotate: '-15deg' }, //Bars
-      img5:  { top: '25%',  left: '40%',   rotate: '18deg' }, //Coins
-      img6:  { top: '28%',  right: '8%',  rotate: '-10deg' }, //Frame
-      img7:  { top: '10%',  left: '12%',  rotate: '8deg' }, //Pen
+      img1:  { top: '8%',   right: '20%',   rotate: '12deg' }, //Bangles
+      img2:  { top: '18%',  left: '8%',  rotate: '-8deg' }, //Rose
+      img3:  { top: '24%',  left: '45%',  rotate: '-10deg' }, //Glass
+      img4:  { bottom: '5%',  right: '2%', rotate: '-15deg' }, //Bars
+      img5:  { top: '40%',  left: '40%',   rotate: '18deg' }, //Coins
+      img6:  { top: '55%',  right: '8%',  rotate: '-10deg' }, //Frame
+      img7:  { top: '25%',  left: '12%',  rotate: '8deg' }, //Pen
       img8:  { top: '28%',  right: '15%', rotate: '-12deg' }, //Fork
-      img9:  { top: '88%',  left: '10%',  rotate: '15deg' },
-      img10: { top: '98%',  right: '5%',  rotate: '-18deg' },
-      img11: { top: '108%', left: '8%',   rotate: '10deg' },
-      img12: { top: '118%', right: '10%', rotate: '-8deg' }
+      img9:  { top: '38%',  left: '10%',  rotate: '15deg' }, //Crown
+      img10: { top: '56%',  left: '5%',  rotate: '-18deg' }, //Necklace
+      img11: { bottom: '10%', left: '8%',   rotate: '10deg' }, //Spoon
+      img12: { bottom: '2%', left: '2%', rotate: '-8deg' } //Lamp
     };
   }
   // Tablet - UNCHANGED
@@ -86,17 +100,17 @@ function positionImages() {
   else {
     imageStyles = {
       img1:  { top: '5%',   left: '10%',  rotate: '10deg' },
-      img2:  { top: '15%',  right: '5%',  rotate: '-15deg' },
+      img2:  { top: '16%',  right: '5%',  rotate: '-15deg' },
       img3:  { bottom: '8%', left: '40%', rotate: '5deg' },
       img4:  { top: '30%',  right: '60%', rotate: '-5deg' },
       img5:  { top: '50%',  right: '50%', rotate: '-51deg' },
       img6:  { bottom: '20%', left: '60%', rotate: '20deg' },
       img7:  { bottom: '10%', right: '10%', rotate: '-5deg' },
-      img8:  { bottom: '10%', left: '40%', rotate: '-5deg' },
+      img8:  { bottom: '30%', left: '43%', rotate: '-5deg' },
       img9:  { top: '10%',  left: '30%', rotate: '-5deg' },
       img10: { bottom: '2%',  right: '1%',  rotate: '-25deg' },
       img11: { bottom: '2%',  left: '0.2%', rotate: '-70deg' },
-      img12: { bottom: '1%',  left: '0.5%', rotate: '-30deg', zIndex: 0 }
+      img12: { bottom: '1%',  left: '0.5%', rotate: '-30deg', zIndex: 10 }
     };
   }
   
@@ -121,6 +135,7 @@ function positionImages() {
       if (s.right)  el.style.right = s.right;
       
       el.style.transform = `rotate(${s.rotate})`;
+      el.style.setProperty('--rotate', s.rotate);
       if (s.zIndex !== undefined) el.style.zIndex = s.zIndex;
     }
   });
@@ -142,6 +157,7 @@ const morphDescription = document.getElementById('modalDescription');
 const closeBtn      = document.querySelector('.close');
 
 galleryImages.forEach(img => {
+  if (img.classList.contains('img12')) return; // skip lamp
   img.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -180,19 +196,15 @@ galleryImages.forEach(img => {
       `;
       document.body.appendChild(clone);
 
-      // Trigger the morph animation on next frame
       requestAnimationFrame(() => {
-        // Fade in backdrop
         morphModal.classList.add("show");
 
-        // Fly clone to target position
         clone.style.top    = targetRect.top    + 'px';
         clone.style.left   = targetRect.left   + 'px';
         clone.style.width  = targetRect.width  + 'px';
         clone.style.height = targetRect.height + 'px';
         clone.style.borderRadius = '12px';
 
-        // When animation ends, show real image and remove clone
         clone.addEventListener('transitionend', () => {
           morphImage.style.opacity = '1';
           clone.remove();
@@ -219,3 +231,62 @@ morphModal.addEventListener("click", function(e) {
     closeMorph();
   }
 });
+
+/* ===============================
+   TRIGGER GALLERY
+================================== */
+
+const gallery = document.querySelector(".gallery-container");
+const images = document.querySelectorAll(".scattered-image");
+
+images.forEach(img => {
+  if (img.classList.contains('img12')) return; // skip lamp
+  img.addEventListener("click", (e) => {
+    e.preventDefault();
+    spawnMultiple(img);
+  });
+});
+
+function spawnMultiple(sourceImg) {
+
+  const amountToSpawn = 3 + Math.floor(Math.random() * 3); 
+  // Spawns 3–5 images per click
+
+  const rect = sourceImg.getBoundingClientRect();
+  const galleryRect = gallery.getBoundingClientRect();
+
+  const baseTop = rect.top - galleryRect.top;
+  const baseLeft = rect.left - galleryRect.left;
+
+  for (let i = 0; i < amountToSpawn; i++) {
+
+    const newImg = document.createElement("img");
+    newImg.src = sourceImg.src;
+
+    newImg.classList.add("clone", "scattered-image");
+
+    // Random size (small to large)
+   const randomSize = 150 + Math.random() * 300;
+    newImg.style.width = randomSize + "px";
+
+    // Spread outward from clicked image
+    const offsetX = (Math.random() - 0.5) * 300;
+    const offsetY = (Math.random() - 0.5) * 300;
+
+    newImg.style.position = "absolute";
+    newImg.style.top = baseTop + offsetY + "px";
+    newImg.style.left = baseLeft + offsetX + "px";
+
+    // Slight rotation
+    const rotation = (Math.random() - 0.5) * 40;
+    newImg.style.transform = `rotate(${rotation}deg) scale(0)`;
+
+    gallery.appendChild(newImg);
+
+    // Animate in
+    setTimeout(() => {
+      newImg.style.transform = `rotate(${rotation}deg) scale(1)`;
+      newImg.style.opacity = "1";
+    }, 20);
+  }
+}

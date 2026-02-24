@@ -2,6 +2,7 @@
  <html lang="en">
    <head>
      <title>Home Page</title>
+     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="../styles.css">
    </head>
@@ -10,113 +11,99 @@
 
     <!-- INFO BUTTON -->
     <div class="menu-container">
-      <button id="info-button" aria-label="Open information panel">
-       i
-      </button>
+      <button id="info-button" aria-label="Open information panel">i</button>
     </div>
     
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; info</span>
-
     <!-- INFO PANEL -->
     <div id="info-panel" class="info-panel">
-    <div class="info-content">
-    <button id="close-info">&times;</button>
-
-    <h2>About This Collection</h2>
+      <button id="close-info">✕</button>
+      <div class="info-content">
+        <h2 class="info-title">About this collection</h2>
         <p class="info-text"> The story of King Midas is a myth about the tragedy of greed and narrates what happens when true happiness is not recognized. 
             Midas was a man who wished that everything he touched would turn into gold. 
             However, he had not thought that this wish was not actually a blessing, but a curse. 
             His greed invites us to think and realize the consequences that may lead us to become slaves of our own desires. 
             The phrase the Midas touch comes from this myth and is used to say that somebody has a good fortune. 
         </p>
-     <p class="info-text"> To interact with elements, click on an object and see why Midas was in love with gold</p>
+        <p class="info-text"> To interact with elements, click on an object and see why Midas was in love with gold</p>
+      </div>
     </div>
-   </div>
+
 
   <!-- IMAGES -->
-      <input type="checkbox" id="genie-trigger">
-      <div id="main-content">
-
-      <div class="gallery-container scale-up-center">
-
+  <input type="checkbox" id="genie-trigger">
+    <div id="main-content">
+      <div class="gallery-container scale-up-center floating">
     <a href="#">
       <img src="../images/bangles-gold.png" onclick="removeFilter(this)"
-        class="img1 image-style scattered-image" 
+        class="img1 image-style scattered-image drop-shadow-glow" 
         alt="A black and white image of bangles (traditional jewellery in South Asian culture)"
           data-description="My daughter used to stack these up her arm. 
-           I touched one. Just one.">
+          Now she can have as many as she wants. As many!">
     </a>
 
     <a href="#">
       <img src="../images/gold-rose.png" onclick="removeFilter(this)"
-        class="img2 image-style scattered-image" 
+        class="img2 image-style scattered-image drop-shadow-glow" 
         alt="A black and white image of a rose"
-        data-description="I picked it to prove the curse was a gift. The petals did not fall. Nothing about it felt like a gift after that">
+        data-description="I picked it to prove the curse was a gift. It had no prickly thorns, no softness, no smell. Nothing about it felt like a gift after that">
     </a>
 
     <a href="#"> 
       <img src="../images/glass-gold.png" onclick="removeFilter(this)"
-        class="img3 image-style scattered-image" 
+        class="img3 image-style scattered-image drop-shadow-glow" 
         alt="A black and white image of a chalice"
         data-description="I raised it to drink. 
         The wine solidified before it reached my lips. 
-        I have not been thirsty since. I have not been anything since">
+        I have not been happy since. I have not been anything since">
     </a>
 
     <a href="#">
       <img src="../images/bars-gold.png" onclick="removeFilter(this)"
-        class="img4 image-style scattered-image" 
+        class="img4 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of gold bars"
-        data-description="This is what I asked for. This is exactly what I asked for.">
+        data-description="I did not need more. I took more anyway.">
     </a>
 
     <a href="#">
       <img src="../images/coin-gold.png" onclick="removeFilter(this)"
-        class="img5 image-style__resized2 scattered-image" 
+        class="img5 image-style__resized2 scattered-image drop-shadow-glow"
         alt="A black and white image of gold coins"
-        data-description="Wealth beyond measure, they said. They forgot to mention I could no longer count it.">
+        data-description="Wealth beyond measure, they said. They forgot to mention I could no longer count it!!">
     </a>
 
     <a href="#">
       <img src="../images/frame-gold.png" onclick="removeFilter(this)"
-        class="img6 image-style scattered-image" 
+        class="img6 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of a picture frame"
-        data-description="A memory I wish to forget">
+        data-description="There was a portrait of her here once. I only meant to straighten it.">
     </a>
 
     <a href="#">
       <img src="../images/pen-gold.png" onclick="removeFilter(this)"
-        class="img7 image-style scattered-image" 
+        class="img7 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of a pen"
         data-description="I tried to write down what was happening to me. The nib touched the page and nothing moved.">
     </a>
 
     <a href="#">
       <img src="../images/fork-gold.png" onclick="removeFilter(this)"
-        class="img8 image-style scattered-image" 
+        class="img8 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of a fork"
-        data-description="I reached for my supper. The fork stiffened in my hand before it touched my lips">
+        data-description="I reached for my supper. The fork turned shiny, but the food, it stiffened in my hand before it touched my lips">
     </a>
 
     <a href="#">
       <img src="../images/crown-gold.png" onclick="removeFilter(this)"
-        class="img9 image-style scattered-image" 
+        class="img9 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of a crown"
         data-description="They said power would suit me. They were right. It suits me perfectly">
     </a>
 
     <a href="#">
       <img src="../images/necklace-gold.png" onclick="removeFilter(this)"
-        class="img10 image-style scattered-image" 
+        class="img10 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of a necklace"
         data-description="I clasped it around her neck myself. She smiled. 
         Then she stopped smiling. 
@@ -125,27 +112,26 @@
 
     <a href="#">
       <img src="../images/spoon-gold.png" onclick="removeFilter(this)"
-        class="img11 image-style scattered-image" 
+        class="img11 image-style scattered-image drop-shadow-glow"
         alt="A black and white image of a spoon"
-        data-description="I sat down to eat on the first evening. I have not set the table since.">
+        data-description="I sat down to eat on the first evening. I have not seen the table since.">
     </a>
-       </div>
+    </div>
 
     <label for="genie-trigger" class="genie-lamp">
       <img src="../images/genie-lamp.png" 
-        class="img12 image-style scattered-image"
+        class="img12 image-style scattered-image drop-shadow-glow"
         alt="A genie lamp"
         data-description="Genie of the lamp, can I wish for no more gold?">
     </label>
+  </div>
 
 
-    <!-- Modal -->
-<div id="morphModal" class="morph-modal hidden">
-
-  <div class="morph-backdrop"></div> <!-- You also need this -->
-
-  <div class="morph-content">
-    <div class="morph-card">
+    <!-- MODAL -->
+    <div id="morphModal" class="morph-modal hidden">
+      <div class="morph-backdrop"></div> <!-- You also need this -->
+      <div class="morph-content">
+      <div class="morph-card">
 
       <button class="close">&times;</button>
 
@@ -159,8 +145,7 @@
 
     </div>
   </div>
-
-</div>
+  </div>
 
     <script src="../script.js"></script>
    </body>
