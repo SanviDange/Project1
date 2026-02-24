@@ -23,7 +23,7 @@ setTimeout(function() {
    AUDIO
 ================================== */
 
-const ambientSound = new Audio('../sounds/background.mp3');
+const ambientSound = new Audio('../sounds/backround-music.mp3');
 ambientSound.loop = true;
 ambientSound.volume = 0.05;
 
