@@ -652,6 +652,23 @@ body.no-scroll {
 
 /* #endregion */
 
+/* #region MAX CLICKS */
+
+.scattered-image.falling {
+  animation: fall 0.5s ease-in forwards !important;
+  transform: translateY(110vh) !important;
+}
+.gallery-container {
+  overflow: hidden;
+}
+
+@keyframes fall {
+  0%   { transform: translateY(0) rotate(var(--rotate, 0deg)); }
+  100% { transform: translateY(110vh) rotate(calc(var(--rotate, 0deg) + 20deg)); }
+}
+
+/* #endregion */
+
 /* =========================
  RESPONSIVE DESIGN
 ========================= */
